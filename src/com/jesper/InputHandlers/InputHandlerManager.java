@@ -6,7 +6,7 @@ import java.util.TreeMap;
 /**
  * Created by Jesper on 7/5/2014.
  */
-public class InputHandlerManager implements InputHandler {
+public class InputHandlerManager {
 
     private Map<String, InputHandler> inputs = new TreeMap<String, InputHandler>();
     private InputHandler defaultHandler = null;
@@ -18,22 +18,6 @@ public class InputHandlerManager implements InputHandler {
 
     public Map<String, InputHandler> getHandlerMap() {return inputs;}
 
-    @Override
-    public String getHelp() {
-        StringBuilder b = new StringBuilder();
-        b.append("Commands:\n");
-        for(InputHandler h : inputs.values()) {
-            b.append(h.getTag()).append("\n");
-        }
-        return b.toString();
-    }
-
-    @Override
-    public String getTag() {
-        return "help";
-    }
-
-    @Override
     public String process(String s) throws Exception {
 
         // To lower case for further parsing
@@ -63,7 +47,9 @@ public class InputHandlerManager implements InputHandler {
     }
 
 
-    private int find(String s, String delimiter, int start) {
-        return s.indexOf(delimiter, start);
-    }
+    //private int find(String s, String delimiter, int start) {
+    //    return s.indexOf(delimiter, start);
+    //}
+
+
 }

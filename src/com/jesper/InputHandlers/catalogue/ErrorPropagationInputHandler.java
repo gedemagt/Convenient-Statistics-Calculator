@@ -31,7 +31,7 @@ public class ErrorPropagationInputHandler implements InputHandler {
         // Split the string
         String[] args = s.split(",");
 
-        if((args.length - 1)%3 != 0) throw new Exception("Invalid number of parameter input!");
+        if((args.length - 1)%3 != 0) throw new Exception("Invalid number of parameters!");
 
         // Save the expression
         String exp = args[0];
@@ -54,7 +54,7 @@ public class ErrorPropagationInputHandler implements InputHandler {
         } catch (UnknownFunctionException e) {
             throw new Exception("Unknown function!");
         } catch (UnparsableExpressionException e) {
-            throw new Exception("Functions cannot be parsed!");
+            throw new Exception("Functions can not be parsed!");
         }
 
         return rapport();
@@ -81,6 +81,7 @@ public class ErrorPropagationInputHandler implements InputHandler {
                 }
             });
         } catch (InvalidCustomFunctionException e) {
+            e.printStackTrace();
         }
         return cf;
     }
@@ -106,12 +107,10 @@ public class ErrorPropagationInputHandler implements InputHandler {
 
     @Override
     public String getHelp() {
-        StringBuilder b = new StringBuilder();
-        b.append("Syntax: \n");
-        b.append("<expression>,<var1>,<mean1>,<dev1>,<var2>,<mean2>,<dev2>,...\nExample: sin(x+y),x,1,2,y,1,2\n");
-        b.append("Supported functions: \n");
-        b.append("abs,acos,asin,atan,cbrt,ceil,cos,cosh,exp,floor,log,sin,sinh,sqrt,tan,tanh,log,log10");
-        return b.toString();
+         return "Syntax: \n " +
+                "<expression>,<var1>,<mean1>,<dev1>,<var2>,<mean2>,<dev2>,...\nExample: sin(x+y),x,1,2,y,1,2\n" +
+                "Supported functions: \n" +
+                "abs,acos,asin,atan,cbrt,ceil,cos,cosh,exp,floor,log,sin,sinh,sqrt,tan,tanh,log,log10";
     }
 
 }

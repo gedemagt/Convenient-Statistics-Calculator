@@ -55,6 +55,8 @@ public class InputHandlerManager {
             return "default";
         }
         public String process(String s) throws Exception {
+            if(s.isEmpty()) return "Current default: " + defaultHandler.getTag();
+
             InputHandler h = inputs.get(s);
             if (h == null) throw new Exception("Unknown tag: " + s);
             else defaultHandler = h;

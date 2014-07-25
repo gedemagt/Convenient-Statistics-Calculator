@@ -27,7 +27,7 @@ public class WeightedAverageInputHandler implements InputHandler {
         // Split the string
         String[] args = input.split(",");
 
-        if((args.length)%2 != 0) throw new Exception("Invalid number of parameter input!");
+        if((args.length)%2 != 0) throw new Exception("Invalid number of parameters!");
 
         // Save the expression
         String exp = args[0];
